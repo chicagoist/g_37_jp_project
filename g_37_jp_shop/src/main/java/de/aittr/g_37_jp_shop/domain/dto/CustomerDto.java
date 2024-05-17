@@ -1,8 +1,5 @@
 package de.aittr.g_37_jp_shop.domain.dto;
 
-import de.aittr.g_37_jp_shop.domain.entity.Cart;
-import jakarta.persistence.*;
-
 import java.util.Objects;
 
 public class CustomerDto {
@@ -51,6 +48,7 @@ public class CustomerDto {
     @Override
     public String toString() {
         return String.format("Customer: ID - %d, name - %s, cart - %s",
-                id, name, cart == null ? "ERROR! Cart is missing!" : cart);
+                id, name,
+                cart == null ? "ERROR! Cart is missing!" : cart);
     }
 }

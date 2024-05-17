@@ -11,8 +11,6 @@ public class ProductSupplyDto {
     private String image;
     private int quantity;
 
-
-
     public Long getId() {
         return id;
     }

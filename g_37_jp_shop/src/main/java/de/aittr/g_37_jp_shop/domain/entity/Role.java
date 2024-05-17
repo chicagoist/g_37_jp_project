@@ -53,6 +53,8 @@ public class Role implements GrantedAuthority {
 
     @Override
     public String toString() {
-        return String.format("Role: ID - %d, title - %s", id, title == null ? null : title.substring(5));
+        // ROLE_ADMIN -> ADMIN
+        return String.format("Role: ID - %d, title - %s",
+                id, title == null ? null : title.substring(5));
     }
 }

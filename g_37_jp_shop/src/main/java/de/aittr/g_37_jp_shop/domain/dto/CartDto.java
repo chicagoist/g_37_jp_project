@@ -1,15 +1,11 @@
 package de.aittr.g_37_jp_shop.domain.dto;
 
-import de.aittr.g_37_jp_shop.domain.entity.Customer;
 import de.aittr.g_37_jp_shop.domain.entity.Product;
-import jakarta.persistence.*;
 
 import java.util.List;
 import java.util.Objects;
 
-
 public class CartDto {
-
 
     private Long id;
     private List<Product> products;

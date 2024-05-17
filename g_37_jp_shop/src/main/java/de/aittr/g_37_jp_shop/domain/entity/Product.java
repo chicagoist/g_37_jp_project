@@ -7,7 +7,6 @@ import jakarta.validation.constraints.*;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-
 @Entity
 @Table(name = "product")
 public class Product {
@@ -19,23 +18,31 @@ public class Product {
 
     @Column(name = "title")
     @NotNull(message = "Product title cannot be null")
-    @NotBlank(message = "Product title cannot be blank")
+    @NotBlank(message = "Product title cannot be empty")
+    // Banana - V
+    // banana - X
+    // Ba - X
+    // BANANA - X
+    // Banana3 - X
+    // Banana# - X
+    // Банан - X
     @Pattern(
             regexp = "[A-Z][a-z ]{2,}",
-            message = "Product regex = minimum two characters"
+            message = "Product title should be at least 3 character length, " +
+                    "start with capital letter and may contain only latin characters"
     )
     private String title;
 
     @Column(name = "price")
     @NotNull(message = "Product price cannot be null")
     @DecimalMin(
-            value = "5.0",
-            message = "Product cannot be less than 5.0"
+            value = "5.00",
+            message = "Product price should be greater or equal than 5"
     )
     @DecimalMax(
-            value = "10000.0",
+            value = "100000.00",
             inclusive = false,
-            message = "Product cannot be more than 10000.0"
+            message = "Product price should be lesser than 100 000"
     )
     private BigDecimal price;
 
@@ -48,6 +55,16 @@ public class Product {
     @Column(name = "quantity")
     private int quantity;
 
+    public Product() {
+    }
+
+    public Product(Long id, String title, BigDecimal price, boolean isActive) {
+        this.id = id;
+        this.title = title;
+        this.price = price;
+        this.isActive = isActive;
+    }
+
     public int getQuantity() {
         return quantity;
     }
@@ -56,22 +73,12 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public Product() {
-    }
-
     public String getImage() {
         return image;
     }
 
     public void setImage(String image) {
         this.image = image;
-    }
-
-    public Product(Long id, String title, BigDecimal price, boolean isActive) {
-        this.id = id;
-        this.title = title;
-        this.price = price;
-        this.isActive = isActive;
     }
 
     public Long getId() {
