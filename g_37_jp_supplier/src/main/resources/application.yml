@@ -1,0 +1,22 @@
+spring:
+  mail:
+    username: chicagoistvalerii@gmail.com
+    password: pdwirorwjumednlf
+    host: smtp.gmail.com
+    port: 587
+    properties:
+      mail:
+        debug: true
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          ssl:
+            protocols: TLSv1.2
+            trust: smtp.gmail.com
+
+supplier:
+  email: 2290038@gmail.com
+
+server:
+  port: 8081

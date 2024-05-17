@@ -1,0 +1,39 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/g_37_jp_shop
+    username: postgres
+    driver-class-name: org.postgresql.Driver
+    password: qwerty007
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
+  jpa:
+    properties:
+      hibernate:
+        auto_quote_keyword: true
+  mail:
+    username: chicagoistvalerii@gmail.com
+    password: pdwirorwjumednlf
+    host: smtp.gmail.com
+    port: 587
+    properties:
+      mail:
+        debug: true
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          ssl:
+            protocols: TLSv1.2
+            trust: smtp.gmail.com
+key:
+  access: aovKvB5EPC2sJF8M1vW08teR3cjH8UeqgbCLRSz1vO0=
+  refresh: ootDucfsr8xxJcQLIXcEdMeFEp2Y4hcmSmSQb83o1Vg=
+
+logging:
+  file:
+    name: logs/log.log
+  level:
+    root: info
+
+messages:
+  hello: Hello from local application!
