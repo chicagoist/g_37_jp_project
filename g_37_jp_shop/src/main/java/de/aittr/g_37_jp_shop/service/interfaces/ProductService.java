@@ -2,6 +2,7 @@ package de.aittr.g_37_jp_shop.service.interfaces;
 
 import de.aittr.g_37_jp_shop.domain.dto.ProductDto;
 import de.aittr.g_37_jp_shop.domain.dto.ProductSupplyDto;
+import de.aittr.g_37_jp_shop.domain.entity.Product;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -13,6 +14,8 @@ public interface ProductService {
     List<ProductDto> getAll();
 
     ProductDto getById(Long id);
+
+    Product getProductEntityById(Long id);
 
     void update(ProductDto product);
 
@@ -30,5 +33,5 @@ public interface ProductService {
 
     void attachImage(String imageUrl, String productTitle);
 
-    public List<ProductSupplyDto> getProductsForSupply();
+    List<ProductSupplyDto> getProductsForSupply();
 }

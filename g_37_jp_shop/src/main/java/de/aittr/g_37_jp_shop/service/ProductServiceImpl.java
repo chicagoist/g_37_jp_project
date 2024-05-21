@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -23,8 +24,7 @@ public class ProductServiceImpl implements ProductService {
     private ProductRepository repository;
     private ProductMappingService mappingService;
 
-    public ProductServiceImpl(ProductRepository repository,
-                              ProductMappingService mappingService) {
+    public ProductServiceImpl(ProductRepository repository, ProductMappingService mappingService) {
         this.repository = repository;
         this.mappingService = mappingService;
     }
@@ -36,10 +36,9 @@ public class ProductServiceImpl implements ProductService {
 
         Product entity = mappingService.mapDtoToEntity(dto);
 
-        // Lesson 16 HW FourthTestException
         try {
             repository.save(entity);
-        } catch(Exception e) {
+        } catch (Exception e) {
             throw new FourthTestException("Saving product error!", e);
         }
 
@@ -55,36 +54,34 @@ public class ProductServiceImpl implements ProductService {
 //        logger.warn("Product with title {} not found", productTitle);
 //        logger.error("SQL exception! Incorrect query");
 
-        List<ProductDto> returnListDto = repository.findAll()
+        return repository.findAll()
                 .stream()
 //                .filter(x -> x.isActive())
                 .filter(Product::isActive)
 //                .map(x -> mappingService.mapEntityToDto(x))
                 .map(mappingService::mapEntityToDto)
                 .toList();
-
-        // Lesson 16 HW SecondTestException
-        if(returnListDto.isEmpty()) {
-            throw new SecondTestException("DB not connect or empty");
-        }
-        return returnListDto;
     }
 
-    // Lesson 16 HW FirstTestException
     @Override
     public ProductDto getById(Long id) {
-        if(id == null || id < 1) {
-            throw new FirstTestException("Product id is incorrect");
+        if (id == null || id < 1) {
+            throw new ThirdTestException("Product id is incorrect");
         }
 
         Product product = repository.findById(id).orElse(null);
 
-        // Lesson 16 HW ThirdTestException
-        if(product == null) {
-            throw new ThirdTestException("Product not found");
+        if (product == null) {
+            throw new RuntimeException("Product not found");
         }
 
         return mappingService.mapEntityToDto(product);
+    }
+
+    @Override
+    public Product getProductEntityById(Long id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new ProductNotFoundException(id));
     }
 
     @Override
