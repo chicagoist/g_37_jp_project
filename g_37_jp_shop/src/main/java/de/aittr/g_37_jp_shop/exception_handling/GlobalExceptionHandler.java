@@ -47,9 +47,13 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(ProductNotFoundException.class)
     public ResponseEntity<Response> handleException(ProductNotFoundException e) {
-        Response response = new Response(e.getMessage(),
-                e.getCause().getMessage());
+        Response response = new Response(e.getMessage());
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+    }
+    @ExceptionHandler(ProductInactiveException.class)
+    public ResponseEntity<Response> handleException(ProductInactiveException e) {
+        Response response = new Response(e.getMessage());
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
 
