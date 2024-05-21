@@ -3,7 +3,7 @@ spring:
     url: jdbc:postgresql://localhost:5432/g_37_jp_shop
     username: postgres
     driver-class-name: org.postgresql.Driver
-    password: qwerty007
+    password:
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.xml
   jpa:
@@ -11,8 +11,8 @@ spring:
       hibernate:
         auto_quote_keyword: true
   mail:
-    username: chicagoistvalerii@gmail.com
-    password: pdwirorwjumednlf
+    username: @gmail.com
+    password:
     host: smtp.gmail.com
     port: 587
     properties:
@@ -26,8 +26,8 @@ spring:
             protocols: TLSv1.2
             trust: smtp.gmail.com
 key:
-  access: aovKvB5EPC2sJF8M1vW08teR3cjH8UeqgbCLRSz1vO0=
-  refresh: ootDucfsr8xxJcQLIXcEdMeFEp2Y4hcmSmSQb83o1Vg=
+  access: =
+  refresh: =
 
 logging:
   file:

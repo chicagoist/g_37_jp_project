@@ -1,7 +1,7 @@
 spring:
   mail:
-    username: chicagoistvalerii@gmail.com
-    password: pdwirorwjumednlf
+    username: @gmail.com
+    password: fuckoff
     host: smtp.gmail.com
     port: 587
     properties:
@@ -16,7 +16,7 @@ spring:
             trust: smtp.gmail.com
 
 supplier:
-  email: 2290038@gmail.com
+  email: my@email
 
 server:
   port: 8081

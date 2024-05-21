@@ -11,8 +11,8 @@ spring:
       hibernate:
         auto_quote_keyword: true
   mail:
-    username: chicagoistvalerii@gmail.com
-    password: pdwirorwjumednlf
+    username: @gmail.com
+    password:
     host: smtp.gmail.com
     port: 587
     properties:
@@ -28,8 +28,8 @@ spring:
 
 
 key:
-  access: aovKvB5EPC2sJF8M1vW08teR3cjH8UeqgbCLRSz1vO0=
-  refresh: ootDucfsr8xxJcQLIXcEdMeFEp2Y4hcmSmSQb83o1Vg=
+  access: =
+  refresh: =
 
 messages:
   hello: Hello from Digital Ocean!
