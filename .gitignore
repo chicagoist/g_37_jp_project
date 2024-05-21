@@ -1,5 +1,9 @@
 /cohort37-JP_type_lecture_module_back_end_lesson_21/
 /cohort37-JP_type_lecture_module_back_end_lesson_*
+application.yml
+application-dev.yml
+application.properties
+
 
 HELP.md
 target/
