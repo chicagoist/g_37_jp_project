@@ -19,7 +19,7 @@ public class Customer {
     @Column(name = "is_active")
     private boolean isActive;
 
-    @OneToOne(mappedBy = "customer")
+    @OneToOne(mappedBy = "customer", cascade = CascadeType.PERSIST)
     private Cart cart;
 
     public Customer() {

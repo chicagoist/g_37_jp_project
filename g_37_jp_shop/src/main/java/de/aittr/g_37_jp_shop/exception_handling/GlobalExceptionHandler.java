@@ -16,41 +16,33 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    // Lesson 16 HW
-    @ExceptionHandler(FirstTestException.class)
-    public ResponseEntity<Response> handleException(FirstTestException e) {
-        Response response = new Response(e.getMessage());
-        return new ResponseEntity<>(response, HttpStatus.NOT_ACCEPTABLE);
-    }
-
-    // Lesson 16 HW
-    @ExceptionHandler(SecondTestException.class)
-    public ResponseEntity<Response> handleException(SecondTestException e) {
-        Response response = new Response(e.getMessage());
-        return new ResponseEntity<>(response, HttpStatus.NO_CONTENT);
-    }
-
-    // Lesson 16 HW
     @ExceptionHandler(ThirdTestException.class)
     public ResponseEntity<Response> handleException(ThirdTestException e) {
         Response response = new Response(e.getMessage());
-        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(response, HttpStatus.I_AM_A_TEAPOT);
     }
 
-    // Lesson 16 HW
     @ExceptionHandler(FourthTestException.class)
     public ResponseEntity<Response> handleException(FourthTestException e) {
-        Response response = new Response(e.getMessage(),
-                e.getCause().getMessage());
-        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        Response response = new Response(e.getMessage(), e.getCause().getMessage());
+        return new ResponseEntity<>(response, HttpStatus.I_AM_A_TEAPOT);
     }
 
     @ExceptionHandler(ProductNotFoundException.class)
     public ResponseEntity<Response> handleException(ProductNotFoundException e) {
-        Response response = new Response(e.getMessage(),
-                e.getCause().getMessage());
+        Response response = new Response(e.getMessage());
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(ProductInactiveException.class)
+    public ResponseEntity<Response> handleException(ProductInactiveException e) {
+        Response response = new Response(e.getMessage());
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+    }
 
+    @ExceptionHandler(CustomerNotFoundException.class)
+    public ResponseEntity<Response> handleException(CustomerNotFoundException e) {
+        Response response = new Response(e.getMessage());
+        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+    }
 }

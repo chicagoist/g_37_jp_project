@@ -8,7 +8,7 @@ import java.util.Objects;
 public class CartDto {
 
     private Long id;
-    private List<Product> products;
+    private List<ProductDto> products;
 
     public Long getId() {
         return id;
@@ -18,11 +18,11 @@ public class CartDto {
         this.id = id;
     }
 
-    public List<Product> getProducts() {
+    public List<ProductDto> getProducts() {
         return products;
     }
 
-    public void setProducts(List<Product> products) {
+    public void setProducts(List<ProductDto> products) {
         this.products = products;
     }
 
@@ -42,6 +42,6 @@ public class CartDto {
     @Override
     public String toString() {
         return String.format("Cart: ID - %d, products - %d items",
-                id, products.size());
+                id, products == null ? null : products.size());
     }
 }
