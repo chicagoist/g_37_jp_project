@@ -3,8 +3,10 @@ package de.aittr.g_37_jp_shop.controller;
 import de.aittr.g_37_jp_shop.domain.dto.ProductDto;
 import de.aittr.g_37_jp_shop.exception_handling.Response;
 import de.aittr.g_37_jp_shop.exception_handling.exceptions.FirstTestException;
+import de.aittr.g_37_jp_shop.exception_handling.exceptions.ProductNotFoundException;
 import de.aittr.g_37_jp_shop.service.interfaces.ProductService;
 import org.springframework.http.HttpStatus;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -52,6 +54,37 @@ public class ProductController {
     public ProductDto save(@RequestBody ProductDto product) {
         return service.save(product);
     }
+
+    @PutMapping
+    public ProductDto update(@RequestBody ProductDto product) {
+        return service.update(product);
+    }
+
+    @DeleteMapping
+    public void delete(
+            @RequestParam(required = false) Long id,
+            @RequestParam(required = false) String title
+    ) {
+        if(id != null) {
+            service.deleteById(id);
+        } else {
+            service.deleteByTitle(title);
+        }
+    }
+
+    @PutMapping("/restore")
+    @Transactional
+    public void restore(@RequestParam Long id) {
+        if(id != null) {
+            service.restoreById(id);
+        } else {
+            throw new ProductNotFoundException(id);
+        }
+    }
+
+
+
+
 
     // 1 СПОСОБ обработки исключений
     // ПЛЮС - позволяет точечно настроить обработку исключения применительно

@@ -29,6 +29,7 @@ public class AspectLogging {
 
 
     // Lesson 15 HW. B
+    //
     @Around("allDomainEntityClasses()")
     public Object aroundAllClassesEntity(ProceedingJoinPoint joinPoint) throws Throwable {
         String methodName = joinPoint.getSignature().getName();
